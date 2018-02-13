@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from argparse import ArgumentParser
 from datetime import datetime
-from logging  import basicConfig, ERROR, getLogger
+from logging import basicConfig, ERROR, getLogger
 from sys import exit
 from urllib2 import URLError, urlopen
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--url", required=True)
     url = parser.parse_args().url
-    
+
     # Read in the data from the URL.
     try:
         csvData = downloadData(url)
@@ -48,13 +48,13 @@ if __name__ == "__main__":
     except ValueError:
         print "Invalid URL given:", url
         exit()
-    
+
     # Configure the logger.
     basicConfig(filename="errors.log", level=ERROR)
-    
+
     # Parse the data.
     personData = processData(csvData)
-    
+
     # Interactively process user input.
     while True:
         try:
@@ -64,5 +64,4 @@ if __name__ == "__main__":
             continue
         if id <= 0:
             exit()
-        displayPerson(id, personData);
-    
+        displayPerson(id, personData)
